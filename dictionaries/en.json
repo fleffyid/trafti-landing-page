@@ -1,0 +1,297 @@
+{
+  "nav": {
+    "features": "Features",
+    "pricing": "Pricing",
+    "forBusiness": "For Business",
+    "forCustomer": "For Customers",
+    "docs": "Guides",
+    "cta": "Start Free",
+    "lang": "EN"
+  },
+  "hero": {
+    "headline": "Manage your barbershop & salon. Effortlessly.",
+    "subheadline": "trafti connects barbershop owners with customers through an all-in-one booking, POS, and staff management platform.",
+    "ctaPrimary": "Register My Shop",
+    "ctaSecondary": "Download Customer App",
+    "tagline": "Look sharp in minutes."
+  },
+  "trustedBy": {
+    "label": "Trusted by",
+    "merchants": "active barbershops & salons",
+    "bookings": "bookings processed monthly",
+    "cities": "cities across Indonesia"
+  },
+  "features": {
+    "title": "Everything You Need",
+    "subtitle": "Complete tools for the modern barbershop & salon",
+    "items": [
+      {
+        "title": "Point of Sale (POS)",
+        "desc": "Fast and accurate digital cashier. Record transactions, manage inventory, and print receipts with ease."
+      },
+      {
+        "title": "Staff Management",
+        "desc": "Schedule shifts, track commissions, and monitor each artist's performance from one dashboard."
+      },
+      {
+        "title": "Online Booking",
+        "desc": "Accept bookings from the Customer App 24/7. No more chaotic WhatsApp booking management."
+      },
+      {
+        "title": "Customer Loyalty",
+        "desc": "Build customer loyalty with reward points, exclusive promos, and automatic notifications."
+      },
+      {
+        "title": "Analytics & Reports",
+        "desc": "Monitor revenue, top services, and business performance in real-time from anywhere."
+      },
+      {
+        "title": "Multi-Branch",
+        "desc": "Manage multiple branches under one account. Centralized reports, full control."
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "Get Started in 3 Steps",
+    "subtitle": "Quick setup, operational right away",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Sign Up & Subscribe",
+        "desc": "Download the Merchant App, create an account, and choose the plan that fits your shop."
+      },
+      {
+        "step": "02",
+        "title": "Set Up Your Shop",
+        "desc": "Add services, prices, hours, and staff profiles. Done in minutes."
+      },
+      {
+        "step": "03",
+        "title": "Receive Bookings from the App",
+        "desc": "Customers book directly from the Customer App. Just confirm and serve."
+      }
+    ]
+  },
+  "forMerchant": {
+    "badge": "For Barbershop Owners",
+    "title": "Grow Revenue, Reduce Hassle",
+    "subtitle": "trafti is built specifically for barbershop and salon owners who want to scale without operational complexity.",
+    "benefits": [
+      "Reduce no-shows with automatic customer reminders",
+      "Manage staff and commissions without spreadsheets",
+      "Real-time financial reports at your fingertips",
+      "Accept digital and cash payments in one cashier"
+    ],
+    "cta": "Learn More"
+  },
+  "forCustomer": {
+    "badge": "For Customers",
+    "title": "Book Your Favorite Barbershop",
+    "subtitle": "Find, book, and pay for your favorite barbershop & salon services anytime, anywhere.",
+    "steps": [
+      "Browse nearby barbershops",
+      "Choose service & schedule",
+      "Show up & enjoy"
+    ],
+    "downloadTitle": "Download Customer App",
+    "appStore": "App Store",
+    "playStore": "Google Play"
+  },
+  "testimonials": {
+    "title": "Trusted by Thousands of Merchants",
+    "subtitle": "Here's what our active merchants are saying.",
+    "items": [
+      {
+        "quote": "Since using trafti, our online bookings tripled. Customers love being able to pick their own schedule without messaging first.",
+        "name": "Budi Santoso",
+        "shop": "Barberking Studio, South Jakarta",
+        "avatar": "B"
+      },
+      {
+        "quote": "Financial reports that used to give me headaches are now visible on my phone instantly. Such a time saver!",
+        "name": "Andi Kurniawan",
+        "shop": "Fade & Fresh Barbershop, Bandung",
+        "avatar": "A"
+      },
+      {
+        "quote": "Staff management became so much smoother. Commissions are auto-calculated — no more payroll mistakes.",
+        "name": "Reza Permana",
+        "shop": "Crown Cuts, Surabaya",
+        "avatar": "R"
+      }
+    ]
+  },
+  "pricingPreview": {
+    "title": "Transparent Pricing, No Hidden Fees",
+    "subtitle": "Start free, upgrade anytime as your business grows.",
+    "monthly": "Monthly",
+    "yearly": "Yearly",
+    "save": "Save 17%",
+    "mostPopular": "MOST POPULAR",
+    "perMonth": "/mo",
+    "perYear": "/yr",
+    "free": "Free",
+    "ctaFree": "Start Free",
+    "ctaPaid": "Choose Plan",
+    "viewAll": "See All Plans",
+    "currencySymbol": "$"
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": [
+      {
+        "q": "Is there a setup fee or contract?",
+        "a": "None. You can start for free without a credit card, and there's no long-term contract. Upgrade or cancel anytime."
+      },
+      {
+        "q": "How long does it take to set up my shop?",
+        "a": "Most shop owners finish setup in 15–30 minutes. Our support team is ready to help if you run into any issues."
+      },
+      {
+        "q": "Do my customers need to download an app?",
+        "a": "Yes, customers use the Customer App (available on App Store & Play Store) to browse and book. The app is free for customers."
+      },
+      {
+        "q": "Can I manage more than one branch?",
+        "a": "Absolutely! The multi-branch feature is available on the Pro plan. Manage all branches from one account with centralized reports."
+      },
+      {
+        "q": "What payment methods are supported?",
+        "a": "trafti supports cash, QRIS, bank transfer, and digital wallets like GoPay and OVO."
+      },
+      {
+        "q": "Is my business data secure?",
+        "a": "Data security is our top priority. All data is stored in encrypted servers and automatically backed up daily."
+      },
+      {
+        "q": "Can it be used without an internet connection?",
+        "a": "Basic POS features work offline. Data syncs automatically when your connection is restored."
+      },
+      {
+        "q": "How do I contact support if I have a problem?",
+        "a": "You can reach our support team via in-app chat, email, or WhatsApp. Pro plan subscribers get priority support."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Ready to Take Your Shop to the Next Level?",
+    "subtitle": "Join thousands of barbershops already growing with trafti",
+    "cta": "Start Now — It's Free"
+  },
+  "footer": {
+    "tagline": "Look sharp in minutes.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+    "links": {
+      "features": "Features",
+      "pricing": "Pricing",
+      "forBusiness": "For Business",
+      "forCustomer": "For Customers",
+      "docs": "Guides",
+      "about": "About Us",
+      "contact": "Contact",
+      "terms": "Terms of Service",
+      "privacy": "Privacy Policy"
+    },
+    "copyright": "© 2026 trafti All rights reserved.",
+    "followUs": "Follow Us"
+  },
+  "docs": {
+    "badge": "Guides & Tutorials",
+    "title": "How to Use trafti",
+    "subtitle": "Complete step-by-step guides for shop owners (Merchant App) and customers (Customer App).",
+    "merchant": {
+      "title": "Merchant App Guide",
+      "subtitle": "For barbershop & salon owners managing their shop with trafti.",
+      "steps": [
+        {
+          "title": "Download & Create an Account",
+          "desc": "Download the Merchant App from the App Store or Play Store, then sign up with your business phone number and email."
+        },
+        {
+          "title": "Choose a Subscription Plan",
+          "desc": "Pick the Free, Growth, or Pro plan that fits your shop. You can upgrade anytime."
+        },
+        {
+          "title": "Set Up Your Shop Profile",
+          "desc": "Add your shop name, address, operating hours, and photos so your shop stands out in the Customer App."
+        },
+        {
+          "title": "Add Services & Prices",
+          "desc": "Enter your list of services such as haircuts or shaves, along with their prices and estimated duration."
+        },
+        {
+          "title": "Add Staff & Commissions",
+          "desc": "Register your artists or staff, set their work schedules, and define each person's commission scheme."
+        },
+        {
+          "title": "Enable Online Booking",
+          "desc": "Turn on online booking so customers can reserve directly from the Customer App 24/7."
+        },
+        {
+          "title": "Manage Transactions with POS",
+          "desc": "Record daily transactions, accept cash or QRIS payments, and print receipts with ease."
+        },
+        {
+          "title": "Track Your Reports",
+          "desc": "Monitor revenue, top services, and staff performance in real-time from your dashboard."
+        }
+      ]
+    },
+    "customer": {
+      "title": "Customer App Guide",
+      "subtitle": "For customers who want to book their favorite barbershop & salon.",
+      "steps": [
+        {
+          "title": "Download the Customer App",
+          "desc": "Download the trafti Customer app for free from the App Store or Play Store."
+        },
+        {
+          "title": "Create an Account",
+          "desc": "Sign up quickly using your phone number or Google account."
+        },
+        {
+          "title": "Find a Barbershop",
+          "desc": "Discover nearby barbershops & salons or search directly for your favorite shop."
+        },
+        {
+          "title": "Choose Service & Schedule",
+          "desc": "Select a service, artist, date, and available time slot that works for you."
+        },
+        {
+          "title": "Confirm Your Booking",
+          "desc": "Review your order details and confirm. You'll receive a reminder notification."
+        },
+        {
+          "title": "Show Up & Pay",
+          "desc": "Arrive on schedule, enjoy the service, and pay through the app or on-site."
+        },
+        {
+          "title": "Earn Points & Leave a Review",
+          "desc": "Collect loyalty points on every visit and leave a review for your favorite barbershop."
+        }
+      ]
+    },
+    "help": {
+      "title": "Need more help?",
+      "desc": "Our support team is ready to help if you have any questions or run into issues.",
+      "cta": "Contact Support"
+    }
+  },
+  "cookie": {
+    "title": "We use cookies",
+    "desc": "We use cookies to improve your experience on this site. Analytics and marketing cookies require your consent.",
+    "acceptAll": "Accept All",
+    "reject": "Reject",
+    "settings": "Settings",
+    "necessary": "Necessary",
+    "necessaryDesc": "Required for basic site functionality.",
+    "analytics": "Analytics",
+    "analyticsDesc": "Helps us understand how visitors use the site.",
+    "marketing": "Marketing",
+    "marketingDesc": "Used to show relevant advertisements.",
+    "save": "Save Preferences",
+    "learnMore": "Cookie Policy"
+  }
+}

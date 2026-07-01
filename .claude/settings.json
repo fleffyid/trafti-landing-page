@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(rtk ls *)",
+      "WebFetch(domain:minutesapps.com)",
+      "Bash(rtk npm *)",
+      "Bash(rtk curl *)",
+      "Bash(rtk playwright *)",
+      "Bash(node -e ' *)",
+      "Bash(screencapture -x /tmp/mockminutes-screenshot.png)"
+    ]
+  }
+}

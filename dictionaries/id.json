@@ -1,0 +1,297 @@
+{
+  "nav": {
+    "features": "Fitur",
+    "pricing": "Harga",
+    "forBusiness": "Untuk Bisnis",
+    "forCustomer": "Untuk Customer",
+    "docs": "Panduan",
+    "cta": "Mulai Gratis",
+    "lang": "ID"
+  },
+  "hero": {
+    "headline": "Kelola barbershop & salon kamu. Tanpa repot.",
+    "subheadline": "trafti menghubungkan pemilik barbershop dengan pelanggan melalui sistem booking, POS, dan manajemen karyawan dalam satu aplikasi.",
+    "ctaPrimary": "Daftarkan Toko Saya",
+    "ctaSecondary": "Download Customer App",
+    "tagline": "trafti dari janji sampai jambul."
+  },
+  "trustedBy": {
+    "label": "Dipercaya oleh",
+    "merchants": "barbershop & salon aktif",
+    "bookings": "booking diproses setiap bulan",
+    "cities": "kota di Indonesia"
+  },
+  "features": {
+    "title": "Semua yang Kamu Butuhkan",
+    "subtitle": "Fitur lengkap untuk barbershop & salon modern",
+    "items": [
+      {
+        "title": "Point of Sale (POS)",
+        "desc": "Kasir digital cepat dan akurat. Catat transaksi, kelola stok, dan cetak struk dengan mudah."
+      },
+      {
+        "title": "Manajemen Karyawan",
+        "desc": "Atur jadwal, komisi, dan performa setiap artist atau karyawan dari satu dashboard."
+      },
+      {
+        "title": "Online Booking",
+        "desc": "Terima booking dari Customer App 24/7. Tidak ada lagi booking via WhatsApp yang berantakan."
+      },
+      {
+        "title": "Customer Loyalty",
+        "desc": "Bangun loyalitas pelanggan dengan poin reward, promo eksklusif, dan notifikasi otomatis."
+      },
+      {
+        "title": "Analytics & Laporan",
+        "desc": "Pantau omzet, layanan terlaris, dan kinerja bisnis secara real-time dari mana saja."
+      },
+      {
+        "title": "Multi-Cabang",
+        "desc": "Kelola lebih dari satu cabang dalam satu akun. Laporan terpusat, kontrol penuh."
+      }
+    ]
+  },
+  "howItWorks": {
+    "title": "Mulai dalam 3 Langkah",
+    "subtitle": "Setup cepat, langsung bisa operasional",
+    "steps": [
+      {
+        "step": "01",
+        "title": "Daftar & Subscribe",
+        "desc": "Download Merchant App, buat akun, dan pilih paket yang sesuai kebutuhan tokomu."
+      },
+      {
+        "step": "02",
+        "title": "Setup Toko",
+        "desc": "Input layanan, harga, jam operasional, dan profil karyawan. Selesai dalam hitungan menit."
+      },
+      {
+        "step": "03",
+        "title": "Terima Booking dari App",
+        "desc": "Pelanggan booking langsung dari Customer App. Kamu tinggal konfirmasi dan layani."
+      }
+    ]
+  },
+  "forMerchant": {
+    "badge": "Untuk Pemilik Barbershop",
+    "title": "Tingkatkan Omzet, Kurangi Repot",
+    "subtitle": "trafti dirancang khusus untuk pemilik barbershop dan salon yang ingin berkembang tanpa kerumitan operasional.",
+    "benefits": [
+      "Kurangi no-show dengan reminder otomatis ke pelanggan",
+      "Kelola karyawan dan komisi tanpa spreadsheet",
+      "Laporan keuangan real-time di genggaman tangan",
+      "Terima pembayaran digital dan tunai dalam satu kasir"
+    ],
+    "cta": "Pelajari Lebih Lanjut"
+  },
+  "forCustomer": {
+    "badge": "Untuk Pelanggan",
+    "title": "Book Barbershop Favorit Kamu",
+    "subtitle": "Cari, booking, dan bayar layanan barbershop & salon favoritmu kapan saja, di mana saja.",
+    "steps": [
+      "Browse barbershop terdekat",
+      "Pilih layanan & jadwal",
+      "Datang & nikmati"
+    ],
+    "downloadTitle": "Download Customer App",
+    "appStore": "App Store",
+    "playStore": "Google Play"
+  },
+  "testimonials": {
+    "title": "Dipercaya Ribuan Merchant",
+    "subtitle": "Kata mereka yang sudah pakai trafti",
+    "items": [
+      {
+        "quote": "Sejak pakai trafti, booking online kami naik 3x lipat. Pelanggan suka bisa pilih jadwal sendiri tanpa harus WA dulu.",
+        "name": "Budi Santoso",
+        "shop": "Barberking Studio, Jakarta Selatan",
+        "avatar": "B"
+      },
+      {
+        "quote": "Laporan keuangan yang tadinya bikin pusing sekarang langsung kelihatan di HP. Hemat waktu banget!",
+        "name": "Andi Kurniawan",
+        "shop": "Fade & Fresh Barbershop, Bandung",
+        "avatar": "A"
+      },
+      {
+        "quote": "Manajemen karyawan jadi lebih rapi. Komisi otomatis terhitung, tidak ada lagi salah bayar gaji.",
+        "name": "Reza Permana",
+        "shop": "Crown Cuts, Surabaya",
+        "avatar": "R"
+      }
+    ]
+  },
+  "pricingPreview": {
+    "title": "Harga Transparan, Tanpa Biaya Tersembunyi",
+    "subtitle": "Mulai gratis, upgrade kapan saja sesuai kebutuhan bisnis kamu.",
+    "monthly": "Bulanan",
+    "yearly": "Tahunan",
+    "save": "Hemat 17%",
+    "mostPopular": "PALING POPULER",
+    "perMonth": "/bln",
+    "perYear": "/thn",
+    "free": "Gratis",
+    "ctaFree": "Mulai Gratis",
+    "ctaPaid": "Pilih Paket",
+    "viewAll": "Lihat Semua Paket",
+    "currencySymbol": "Rp"
+  },
+  "faq": {
+    "title": "Pertanyaan yang Sering Ditanyakan",
+    "items": [
+      {
+        "q": "Apakah ada biaya setup atau kontrak?",
+        "a": "Tidak ada. Kamu bisa mulai gratis tanpa kartu kredit, dan tidak ada kontrak jangka panjang. Upgrade atau cancel kapan saja."
+      },
+      {
+        "q": "Berapa lama setup toko di trafti?",
+        "a": "Rata-rata pemilik toko selesai setup dalam 15–30 menit. Tim support kami siap membantu jika ada kendala."
+      },
+      {
+        "q": "Apakah pelanggan saya perlu download app?",
+        "a": "Ya, pelanggan menggunakan Customer App (tersedia di App Store & Play Store) untuk browse dan booking. App-nya gratis untuk pelanggan."
+      },
+      {
+        "q": "Bisakah saya kelola lebih dari satu cabang?",
+        "a": "Bisa! Fitur multi-cabang tersedia di paket Pro. Kamu bisa kelola semua cabang dari satu akun dengan laporan terpusat."
+      },
+      {
+        "q": "Metode pembayaran apa yang didukung?",
+        "a": "trafti mendukung pembayaran tunai, QRIS, transfer bank, dan dompet digital seperti GoPay dan OVO."
+      },
+      {
+        "q": "Apakah data bisnis saya aman?",
+        "a": "Keamanan data adalah prioritas kami. Data disimpan di server yang terenkripsi dan di-backup secara otomatis setiap hari."
+      },
+      {
+        "q": "Apakah bisa digunakan tanpa koneksi internet?",
+        "a": "Fitur POS dasar bisa digunakan secara offline. Data akan tersinkronisasi otomatis saat koneksi kembali tersedia."
+      },
+      {
+        "q": "Bagaimana cara menghubungi support jika ada masalah?",
+        "a": "Kamu bisa menghubungi tim support kami melalui chat di dalam app, email, atau WhatsApp. Paket Pro mendapatkan priority support."
+      }
+    ]
+  },
+  "finalCta": {
+    "title": "Siap Bawa Tokomu ke Level Berikutnya?",
+    "subtitle": "Bergabung dengan ribuan barbershop yang sudah berkembang bersama trafti",
+    "cta": "Mulai Sekarang — Gratis"
+  },
+  "footer": {
+    "tagline": "trafti dari janji sampai jambul.",
+    "product": "Produk",
+    "company": "Perusahaan",
+    "legal": "Legal",
+    "links": {
+      "features": "Fitur",
+      "pricing": "Harga",
+      "forBusiness": "Untuk Bisnis",
+      "forCustomer": "Untuk Customer",
+      "docs": "Panduan",
+      "about": "Tentang Kami",
+      "contact": "Kontak",
+      "terms": "Syarat & Ketentuan",
+      "privacy": "Kebijakan Privasi"
+    },
+    "copyright": "© 2026 trafti Semua hak dilindungi.",
+    "followUs": "Ikuti Kami"
+  },
+  "docs": {
+    "badge": "Panduan & Tutorial",
+    "title": "Cara Menggunakan trafti",
+    "subtitle": "Panduan lengkap langkah demi langkah untuk pemilik toko (Merchant App) dan pelanggan (Customer App).",
+    "merchant": {
+      "title": "Panduan Merchant App",
+      "subtitle": "Untuk pemilik barbershop & salon yang mengelola toko lewat trafti.",
+      "steps": [
+        {
+          "title": "Download & Daftar Akun",
+          "desc": "Unduh Merchant App di App Store atau Play Store, lalu daftar menggunakan nomor HP dan email bisnismu."
+        },
+        {
+          "title": "Pilih Paket Langganan",
+          "desc": "Pilih paket Free, Growth, atau Pro sesuai kebutuhan tokomu. Kamu bisa upgrade kapan saja."
+        },
+        {
+          "title": "Setup Profil Toko",
+          "desc": "Lengkapi nama toko, alamat, jam operasional, dan foto agar tokomu tampil menarik di Customer App."
+        },
+        {
+          "title": "Tambah Layanan & Harga",
+          "desc": "Input daftar layanan seperti potong rambut atau cukur, beserta harga dan estimasi durasinya."
+        },
+        {
+          "title": "Tambah Karyawan & Komisi",
+          "desc": "Daftarkan artist atau karyawan, atur jadwal kerja, dan tentukan skema komisi masing-masing."
+        },
+        {
+          "title": "Aktifkan Online Booking",
+          "desc": "Nyalakan fitur booking online agar pelanggan bisa reservasi langsung dari Customer App 24/7."
+        },
+        {
+          "title": "Kelola Transaksi dengan POS",
+          "desc": "Catat transaksi harian, terima pembayaran tunai maupun QRIS, dan cetak struk dengan mudah."
+        },
+        {
+          "title": "Pantau Laporan",
+          "desc": "Lihat omzet, layanan terlaris, dan performa karyawan secara real-time dari dashboard."
+        }
+      ]
+    },
+    "customer": {
+      "title": "Panduan Customer App",
+      "subtitle": "Untuk pelanggan yang ingin booking barbershop & salon favorit.",
+      "steps": [
+        {
+          "title": "Download Customer App",
+          "desc": "Unduh aplikasi trafti Customer secara gratis di App Store atau Play Store."
+        },
+        {
+          "title": "Buat Akun",
+          "desc": "Daftar cepat menggunakan nomor HP atau akun Google kamu."
+        },
+        {
+          "title": "Cari Barbershop",
+          "desc": "Temukan barbershop & salon terdekat atau cari langsung toko favoritmu."
+        },
+        {
+          "title": "Pilih Layanan & Jadwal",
+          "desc": "Pilih layanan, artist, tanggal, dan jam yang tersedia sesuai keinginanmu."
+        },
+        {
+          "title": "Konfirmasi Booking",
+          "desc": "Cek kembali detail pesanan lalu konfirmasi. Kamu akan menerima notifikasi pengingat."
+        },
+        {
+          "title": "Datang & Bayar",
+          "desc": "Datang sesuai jadwal, nikmati layanan, dan bayar lewat app atau langsung di tempat."
+        },
+        {
+          "title": "Kumpulkan Poin & Beri Ulasan",
+          "desc": "Dapatkan poin loyalty dari setiap kunjungan dan beri ulasan untuk barbershop favoritmu."
+        }
+      ]
+    },
+    "help": {
+      "title": "Butuh bantuan lebih lanjut?",
+      "desc": "Tim support kami siap membantu jika kamu punya pertanyaan atau kendala.",
+      "cta": "Hubungi Support"
+    }
+  },
+  "cookie": {
+    "title": "Kami menggunakan cookie",
+    "desc": "Kami menggunakan cookie untuk meningkatkan pengalaman kamu di situs ini. Cookie analitik dan marketing membutuhkan persetujuanmu.",
+    "acceptAll": "Terima Semua",
+    "reject": "Tolak",
+    "settings": "Pengaturan",
+    "necessary": "Diperlukan",
+    "necessaryDesc": "Cookie yang diperlukan untuk fungsi dasar situs.",
+    "analytics": "Analitik",
+    "analyticsDesc": "Membantu kami memahami cara pengunjung menggunakan situs.",
+    "marketing": "Marketing",
+    "marketingDesc": "Digunakan untuk menampilkan iklan yang relevan.",
+    "save": "Simpan Preferensi",
+    "learnMore": "Kebijakan Cookie"
+  }
+}
