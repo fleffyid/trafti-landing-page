@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { Menu, X } from "lucide-react";
 import type { Locale } from "@/app/[lang]/dictionaries";
 
@@ -39,8 +40,16 @@ export default function Navbar({
         {/* Logo */}
         <Link
           href={`/${lang}`}
-          className="flex items-center gap-0 leading-none"
+          className="flex items-center gap-2 leading-none"
         >
+          <Image
+            src="/brand/logo-mark.svg"
+            alt="trafti"
+            width={20}
+            height={28}
+            priority
+            className="h-7 w-auto"
+          />
           <span
             className="serif text-[22px] text-[var(--fg)] tracking-tight"
             style={{ letterSpacing: "-0.02em" }}
@@ -49,7 +58,7 @@ export default function Navbar({
           </span>
           <em
             className="serif not-italic text-[22px]"
-            style={{ color: "var(--clay-600)", letterSpacing: "-0.02em" }}
+            style={{ color: "var(--sage-600)", letterSpacing: "-0.02em" }}
           >
             .
           </em>
@@ -78,7 +87,7 @@ export default function Navbar({
           </Link>
           <Link
             href={`/${lang}/pricing`}
-            className="bg-[var(--clay-600)] hover:bg-[var(--clay-700)] text-white text-sm font-semibold px-5 py-2 rounded-full transition-all hover:-translate-y-px"
+            className="bg-[var(--sage-600)] hover:bg-[var(--sage-700)] text-white text-sm font-semibold px-5 py-2 rounded-full transition-all hover:-translate-y-px"
             style={{ boxShadow: "var(--shadow-sm)" }}
           >
             {dict.cta}
@@ -120,7 +129,7 @@ export default function Navbar({
               <Link
                 href={`/${lang}/pricing`}
                 onClick={() => setOpen(false)}
-                className="bg-[var(--clay-600)] hover:bg-[var(--clay-700)] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors"
+                className="bg-[var(--sage-600)] hover:bg-[var(--sage-700)] text-white text-sm font-semibold px-5 py-2 rounded-full transition-colors"
               >
                 {dict.cta}
               </Link>

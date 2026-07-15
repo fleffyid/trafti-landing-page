@@ -1,117 +1,236 @@
-export type PricingTier = {
+// Pricing content for the landing page.
+//
+// Live paid packages (Basic / Pro / Enterprise) — names, per-duration prices,
+// and feature bullets — are the backend's job (GET /v1/subscriptions/packages).
+// This file holds only what the marketing site owns locally:
+//   1. the always-local Free tier,
+//   2. EN translations for the DB's Indonesian feature strings,
+//   3. IDR formatting,
+//   4. a fallback snapshot used when the API is unreachable at build/render.
+//
+// Prices are IDR (the real billing currency via mayar.id). `effective` is the
+// actual sale price (discountedPrice ?? normalPrice); `normal` is the strike-
+// through list price.
+
+import type { ApiSubscriptionPackage } from "@/lib/api";
+import type { Locale } from "@/app/[lang]/dictionaries";
+
+export interface DisplayPrice {
+  effective: number;
+  normal: number;
+}
+
+/** One purchasable duration of a tier (1 / 3 / 6 / 12 months). */
+export interface DurationPrice {
+  months: number;
+  price: DisplayPrice;
+}
+
+export interface DisplayFeature {
   id: string;
+  en: string;
+}
+
+export interface DisplayTier {
+  slug: string;
   name: string;
-  priceMonthly: { IDR: number; USD: number };
-  priceYearly: { IDR: number; USD: number };
   highlighted: boolean;
-  cta: { id: string; en: string };
-  limits: {
-    artists: number | "unlimited";
-    transactions: number | "unlimited";
-  };
-  features: {
-    label: { id: string; en: string };
-    included: boolean | "coming_soon";
-    note?: string;
-  }[];
+  isFree: boolean;
+  /** All durations the tier can be bought for, sorted ascending by months. */
+  durations: DurationPrice[];
+  /** Convenience accessors derived from `durations`. */
+  monthly: DisplayPrice | null;
+  yearly: DisplayPrice | null;
+  features: DisplayFeature[];
+}
+
+/** The durations we surface on the marketing site. */
+export const DURATION_MONTHS = [1, 3, 6, 12] as const;
+
+/** Look up a tier's price for a given duration (null if not offered). */
+export function priceForMonths(
+  tier: DisplayTier,
+  months: number
+): DisplayPrice | null {
+  return tier.durations.find((d) => d.months === months)?.price ?? null;
+}
+
+/** Attach `monthly`/`yearly` convenience fields from a `durations` list. */
+function withConvenience(
+  base: Omit<DisplayTier, "monthly" | "yearly">
+): DisplayTier {
+  const at = (m: number) =>
+    base.durations.find((d) => d.months === m)?.price ?? null;
+  return { ...base, monthly: at(1), yearly: at(12) };
+}
+
+/** Build a durations list from flat [months, normal, effective] tuples. */
+function makeDurations(
+  rows: readonly (readonly [number, number, number])[]
+): DurationPrice[] {
+  return rows
+    .map(([months, normal, effective]) => ({
+      months,
+      price: { normal, effective },
+    }))
+    .sort((a, b) => a.months - b.months);
+}
+
+// EN translations for the Indonesian feature strings stored on each package.
+// Unknown strings fall back to the raw Indonesian text so nothing disappears.
+export const FEATURE_EN: Record<string, string> = {
+  "Manajemen 1 outlet": "Manage 1 outlet",
+  "Manajemen hingga 5 outlet": "Manage up to 5 outlets",
+  "Outlet tidak terbatas": "Unlimited outlets",
+  "Maksimal 2 karyawan": "Up to 2 staff",
+  "Maksimal 5 karyawan": "Up to 5 staff",
+  "Maksimal 25 karyawan": "Up to 25 staff",
+  "Karyawan tidak terbatas": "Unlimited staff",
+  "Booking dari Customer App": "Bookings from Customer App",
+  "POS transaksi": "POS transactions",
+  "POS transaksi (100/bulan)": "POS transactions (100/mo)",
+  "Laporan basic": "Basic reports",
+  "Laporan lengkap": "Full reports",
+  "Export laporan": "Report export",
+  "Laporan lengkap + export": "Full reports + export",
+  "Priority support": "Priority support",
 };
 
-export const pricingTiers: PricingTier[] = [
+function translateFeature(id: string): DisplayFeature {
+  return { id, en: FEATURE_EN[id] ?? id };
+}
+
+// The Free tier never lives in the subscriptions table — it's the trial/entry
+// plan surfaced only for marketing.
+export const FREE_TIER: DisplayTier = withConvenience({
+  slug: "free",
+  name: "Free",
+  highlighted: false,
+  isFree: true,
+  durations: DURATION_MONTHS.map((months) => ({
+    months,
+    price: { effective: 0, normal: 0 },
+  })),
+  features: [
+    "Manajemen 1 outlet",
+    "Maksimal 2 karyawan",
+    "Booking dari Customer App",
+    "POS transaksi (100/bulan)",
+    "Laporan basic",
+  ].map(translateFeature),
+});
+
+// Snapshot of the seeded packages, used only when the API can't be reached.
+// Keep in sync with prisma/seed.ts SUBSCRIPTION_PACKAGES.
+export const FALLBACK_PAID_TIERS: DisplayTier[] = [
   {
-    id: "free",
-    name: "Free",
-    priceMonthly: { IDR: 0, USD: 0 },
-    priceYearly: { IDR: 0, USD: 0 },
+    slug: "basic",
+    name: "Basic",
     highlighted: false,
-    cta: { id: "Mulai Gratis", en: "Start Free" },
-    limits: { artists: 2, transactions: 100 },
+    isFree: false,
+    // [months, normalPrice, effectivePrice]
+    durations: makeDurations([
+      [1, 89900, 69900],
+      [3, 239900, 179900],
+      [6, 519900, 389900],
+      [12, 869900, 699900],
+    ]),
     features: [
-      { label: { id: "Maks. 2 Artist/Karyawan", en: "Up to 2 Artists/Staff" }, included: true },
-      { label: { id: "Online Booking dari Customer App", en: "Online Booking from Customer App" }, included: true },
-      { label: { id: "POS Basic", en: "Basic POS" }, included: true },
-      { label: { id: "100 Transaksi/bulan", en: "100 Transactions/month" }, included: true },
-      { label: { id: "Dashboard Analytics Basic", en: "Basic Analytics Dashboard" }, included: true },
-      { label: { id: "Expense Tracking", en: "Expense Tracking" }, included: false },
-      { label: { id: "Multi-Account Login", en: "Multi-Account Login" }, included: false },
-      { label: { id: "Bluetooth Printer Support", en: "Bluetooth Printer Support" }, included: false },
-      { label: { id: "Promo & Discount Management", en: "Promo & Discount Management" }, included: false },
-      { label: { id: "Marketing Tools", en: "Marketing Tools" }, included: false },
-      { label: { id: "Priority Support", en: "Priority Support" }, included: false },
-      { label: { id: "Multi-Cabang", en: "Multi-Branch" }, included: "coming_soon" },
-    ],
+      "Manajemen 1 outlet",
+      "Maksimal 5 karyawan",
+      "Booking dari Customer App",
+      "POS transaksi",
+      "Laporan basic",
+    ].map(translateFeature),
   },
   {
-    id: "growth",
-    name: "Growth",
-    priceMonthly: { IDR: 199000, USD: 14 },
-    priceYearly: { IDR: 1990000, USD: 140 },
-    highlighted: true,
-    cta: { id: "Pilih Paket", en: "Choose Plan" },
-    limits: { artists: 10, transactions: "unlimited" },
-    features: [
-      { label: { id: "Maks. 10 Artist/Karyawan", en: "Up to 10 Artists/Staff" }, included: true },
-      { label: { id: "Online Booking dari Customer App", en: "Online Booking from Customer App" }, included: true },
-      { label: { id: "POS Basic", en: "Basic POS" }, included: true },
-      { label: { id: "Transaksi Unlimited", en: "Unlimited Transactions" }, included: true },
-      { label: { id: "Dashboard Analytics Full", en: "Full Analytics Dashboard" }, included: true },
-      { label: { id: "Expense Tracking", en: "Expense Tracking" }, included: true },
-      { label: { id: "Multi-Account Login", en: "Multi-Account Login" }, included: true },
-      { label: { id: "Bluetooth Printer Support", en: "Bluetooth Printer Support" }, included: true },
-      { label: { id: "Promo & Discount Management", en: "Promo & Discount Management" }, included: true },
-      { label: { id: "Marketing Tools", en: "Marketing Tools" }, included: false },
-      { label: { id: "Priority Support", en: "Priority Support" }, included: false },
-      { label: { id: "Multi-Cabang", en: "Multi-Branch" }, included: "coming_soon" },
-    ],
-  },
-  {
-    id: "pro",
+    slug: "pro",
     name: "Pro",
-    priceMonthly: { IDR: 499000, USD: 34 },
-    priceYearly: { IDR: 4990000, USD: 340 },
-    highlighted: false,
-    cta: { id: "Pilih Paket", en: "Choose Plan" },
-    limits: { artists: "unlimited", transactions: "unlimited" },
+    highlighted: true,
+    isFree: false,
+    durations: makeDurations([
+      [1, 159900, 69900],
+      [3, 439900, 239900],
+      [6, 869900, 499900],
+      [12, 1569900, 869900],
+    ]),
     features: [
-      { label: { id: "Artist/Karyawan Unlimited", en: "Unlimited Artists/Staff" }, included: true },
-      { label: { id: "Online Booking dari Customer App", en: "Online Booking from Customer App" }, included: true },
-      { label: { id: "POS Basic", en: "Basic POS" }, included: true },
-      { label: { id: "Transaksi Unlimited", en: "Unlimited Transactions" }, included: true },
-      { label: { id: "Dashboard Analytics Full + Export", en: "Full Analytics Dashboard + Export" }, included: true },
-      { label: { id: "Expense Tracking", en: "Expense Tracking" }, included: true },
-      { label: { id: "Multi-Account Login", en: "Multi-Account Login" }, included: true },
-      { label: { id: "Bluetooth Printer Support", en: "Bluetooth Printer Support" }, included: true },
-      { label: { id: "Promo & Discount Management", en: "Promo & Discount Management" }, included: true },
-      { label: { id: "Marketing Tools", en: "Marketing Tools" }, included: true },
-      { label: { id: "Priority Support", en: "Priority Support" }, included: true },
-      { label: { id: "Multi-Cabang", en: "Multi-Branch" }, included: "coming_soon" },
-    ],
+      "Manajemen hingga 5 outlet",
+      "Maksimal 25 karyawan",
+      "Booking dari Customer App",
+      "POS transaksi",
+      "Laporan lengkap",
+      "Export laporan",
+    ].map(translateFeature),
   },
-];
+  {
+    slug: "enterprise",
+    name: "Enterprise",
+    highlighted: false,
+    isFree: false,
+    durations: makeDurations([
+      [1, 229900, 199900],
+      [3, 689900, 529900],
+      [6, 1199900, 979900],
+      [12, 2229900, 1859900],
+    ]),
+    features: [
+      "Outlet tidak terbatas",
+      "Karyawan tidak terbatas",
+      "Booking dari Customer App",
+      "POS transaksi",
+      "Laporan lengkap + export",
+      "Priority support",
+    ].map(translateFeature),
+  },
+].map(withConvenience);
 
-export function formatPrice(
-  tier: PricingTier,
-  billing: "monthly" | "yearly",
-  locale: "id" | "en"
-): string {
-  const currency = locale === "id" ? "IDR" : "USD";
-  const amount =
-    billing === "monthly"
-      ? tier.priceMonthly[currency]
-      : tier.priceYearly[currency];
+/** Normalize live packages into display tiers, sorted by the backend order. */
+export function buildPaidTiers(pkgs: ApiSubscriptionPackage[]): DisplayTier[] {
+  return [...pkgs]
+    .filter((p) => p.isActive)
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map((p) => {
+      const feats = Array.isArray(p.features) ? (p.features as string[]) : [];
+      const durations: DurationPrice[] = [...p.prices]
+        .map((row) => ({
+          months: row.durationMonths,
+          price: {
+            effective: Number(
+              row.effectivePrice ?? row.discountedPrice ?? row.normalPrice
+            ),
+            normal: Number(row.normalPrice),
+          },
+        }))
+        .sort((a, b) => a.months - b.months);
+      return withConvenience({
+        slug: p.slug,
+        name: p.name,
+        highlighted: p.slug === "pro",
+        isFree: false,
+        durations,
+        features: feats.map(translateFeature),
+      });
+    });
+}
 
-  if (amount === 0) return locale === "id" ? "Gratis" : "Free";
+/** Full tier list (Free first) from live packages, or the fallback snapshot. */
+export function buildAllTiers(
+  pkgs: ApiSubscriptionPackage[] | null
+): DisplayTier[] {
+  const paid =
+    pkgs && pkgs.length > 0 ? buildPaidTiers(pkgs) : FALLBACK_PAID_TIERS;
+  return [FREE_TIER, ...paid];
+}
 
-  if (currency === "IDR") {
-    return new Intl.NumberFormat("id-ID", {
-      style: "currency",
-      currency: "IDR",
-      maximumFractionDigits: 0,
-    }).format(amount);
-  }
-
-  return new Intl.NumberFormat("en-US", {
+export function formatIDR(amount: number): string {
+  return new Intl.NumberFormat("id-ID", {
     style: "currency",
-    currency: "USD",
+    currency: "IDR",
     maximumFractionDigits: 0,
   }).format(amount);
+}
+
+export function featureLabel(f: DisplayFeature, locale: Locale): string {
+  return locale === "id" ? f.id : f.en;
 }

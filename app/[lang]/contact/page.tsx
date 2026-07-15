@@ -73,7 +73,10 @@ export default function ContactPage() {
   return (
     <div className="pt-16">
       <section className="py-20 px-6 bg-[var(--bg-muted)] text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--primary)] mb-4">
+        <h1
+          className="serif text-4xl md:text-5xl font-normal text-[var(--fg)] leading-tight mb-4"
+          style={{ letterSpacing: "-0.02em" }}
+        >
           {t.title}
         </h1>
         <p className="text-[var(--text-secondary)] text-lg max-w-xl mx-auto">
@@ -86,7 +89,7 @@ export default function ContactPage() {
           {/* Form */}
           <div>
             {submitted ? (
-              <div className="bg-[var(--clay-100)] border border-[var(--clay-100)] rounded-2xl p-8 text-center">
+              <div className="bg-[var(--sage-100)] border border-[var(--sage-100)] rounded-2xl p-8 text-center">
                 <div className="w-12 h-12 rounded-full bg-[var(--accent)] text-white flex items-center justify-center mx-auto mb-4 text-xl">
                   ✓
                 </div>
@@ -183,7 +186,7 @@ export default function ContactPage() {
           {/* Contact info */}
           <div className="space-y-6">
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[var(--clay-100)] flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-[var(--sage-100)] flex items-center justify-center flex-shrink-0">
                 <MapPin size={18} className="text-[var(--accent)]" />
               </div>
               <div>
@@ -196,7 +199,7 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[var(--clay-100)] flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-[var(--sage-100)] flex items-center justify-center flex-shrink-0">
                 <Phone size={18} className="text-[var(--accent)]" />
               </div>
               <div>
@@ -209,7 +212,7 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[var(--clay-100)] flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-[var(--sage-100)] flex items-center justify-center flex-shrink-0">
                 <Mail size={18} className="text-[var(--accent)]" />
               </div>
               <div>
@@ -222,7 +225,7 @@ export default function ContactPage() {
               </div>
             </div>
             <div className="flex gap-4">
-              <div className="w-10 h-10 rounded-xl bg-[var(--clay-100)] flex items-center justify-center flex-shrink-0">
+              <div className="w-10 h-10 rounded-xl bg-[var(--sage-100)] flex items-center justify-center flex-shrink-0">
                 <Clock size={18} className="text-[var(--accent)]" />
               </div>
               <div>

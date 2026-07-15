@@ -29,7 +29,10 @@ export default async function PrivacyPage({
     <div className="pt-16">
       <div className="max-w-3xl mx-auto px-6 py-16">
         <div className="mb-10">
-          <h1 className="text-3xl md:text-4xl font-bold text-[var(--primary)] mb-3">
+          <h1
+            className="serif text-4xl md:text-5xl font-normal text-[var(--fg)] leading-tight mb-3"
+            style={{ letterSpacing: "-0.02em" }}
+          >
             {locale === "id" ? "Kebijakan Privasi" : "Privacy Policy"}
           </h1>
           <p className="text-sm text-[var(--text-secondary)]">

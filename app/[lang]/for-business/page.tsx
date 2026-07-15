@@ -81,10 +81,13 @@ export default async function ForBusinessPage({
       {/* Hero */}
       <section className="py-24 px-6 bg-[var(--bg-muted)]">
         <div className="max-w-4xl mx-auto text-center">
-          <span className="inline-block bg-[var(--clay-100)] text-[var(--accent)] text-xs font-semibold px-3 py-1 rounded-full mb-5 border border-[var(--clay-100)]">
+          <span className="inline-block bg-[var(--sage-100)] text-[var(--accent)] text-xs font-semibold px-3 py-1 rounded-full mb-5 border border-[var(--sage-100)]">
             {dict.forMerchant.badge}
           </span>
-          <h1 className="text-4xl md:text-5xl font-bold text-[var(--primary)] mb-5 leading-tight">
+          <h1
+            className="serif text-4xl md:text-5xl font-normal text-[var(--fg)] mb-5 leading-tight"
+            style={{ letterSpacing: "-0.02em" }}
+          >
             {dict.forMerchant.title}
           </h1>
           <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto mb-10">
@@ -103,7 +106,10 @@ export default async function ForBusinessPage({
       {/* Benefits */}
       <section className="py-20 px-6 bg-[var(--bg-elev)]">
         <div className="max-w-5xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--primary)] text-center mb-14">
+          <h2
+            className="serif text-3xl md:text-4xl font-normal text-[var(--fg)] text-center mb-14"
+            style={{ letterSpacing: "-0.015em" }}
+          >
             {locale === "id"
               ? "Mengapa Merchant Memilih trafti"
               : "Why Merchants Choose trafti"}
@@ -116,7 +122,7 @@ export default async function ForBusinessPage({
                   key={b.title}
                   className="flex gap-5 p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--accent)] transition-colors"
                 >
-                  <div className="w-11 h-11 rounded-xl bg-[var(--clay-100)] flex items-center justify-center flex-shrink-0">
+                  <div className="w-11 h-11 rounded-xl bg-[var(--sage-100)] flex items-center justify-center flex-shrink-0">
                     <Icon size={20} className="text-[var(--accent)]" />
                   </div>
                   <div>
@@ -137,7 +143,10 @@ export default async function ForBusinessPage({
       {/* Checklist */}
       <section className="py-20 px-6 bg-[var(--bg-muted)]">
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--primary)] text-center mb-10">
+          <h2
+            className="serif text-3xl md:text-4xl font-normal text-[var(--fg)] text-center mb-10"
+            style={{ letterSpacing: "-0.015em" }}
+          >
             {locale === "id"
               ? "Semua yang Kamu Dapatkan"
               : "Everything You Get"}
@@ -162,7 +171,10 @@ export default async function ForBusinessPage({
       {/* Demo request CTA */}
       <section className="py-20 px-6 bg-[var(--primary)]">
         <div className="max-w-xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+          <h2
+            className="serif text-3xl md:text-4xl font-normal text-white mb-4"
+            style={{ letterSpacing: "-0.015em" }}
+          >
             {locale === "id"
               ? "Mau Lihat Demo Langsung?"
               : "Want to See a Live Demo?"}

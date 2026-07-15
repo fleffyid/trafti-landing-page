@@ -10,11 +10,13 @@ import {
   Building2,
   Check,
   ChevronDown,
-  Smartphone,
   ArrowRight,
 } from "lucide-react";
+import Image from "next/image";
 import { hasLocale, getDictionary, type Locale } from "./dictionaries";
-import { pricingTiers, formatPrice } from "@/config/pricing";
+import { buildAllTiers, formatIDR } from "@/config/pricing";
+import { getPublicStats, getSubscriptionPackages } from "@/lib/api";
+import { MerchantAppCTA, CustomerAppBadges } from "@/components/AppBadges";
 
 export async function generateMetadata({
   params,
@@ -64,6 +66,28 @@ export default async function HomePage({
   const dict = await getDictionary(lang as Locale);
   const locale = lang as Locale;
 
+  // Live data (both resilient — null on failure, handled at render).
+  const [stats, packages] = await Promise.all([
+    getPublicStats(),
+    getSubscriptionPackages(),
+  ]);
+  const tiers = buildAllTiers(packages);
+  const nf = new Intl.NumberFormat(locale === "id" ? "id-ID" : "en-US");
+  const statItems = [
+    {
+      value: stats ? nf.format(stats.merchants) : "—",
+      label: dict.trustedBy.merchants,
+    },
+    {
+      value: stats ? nf.format(stats.bookings) : "—",
+      label: dict.trustedBy.bookings,
+    },
+    {
+      value: stats ? nf.format(stats.cities) : "—",
+      label: dict.trustedBy.cities,
+    },
+  ];
+
   return (
     <div className="pt-16">
       {/* ── 1. Hero ────────────────────────────────────────────────── */}
@@ -75,7 +99,7 @@ export default async function HomePage({
           style={{ background: "var(--accent)" }}
         />
         <div className="max-w-4xl mx-auto text-center relative">
-          <span className="inline-flex items-center gap-2 bg-[var(--clay-100)] text-[var(--clay-600)] text-xs font-semibold px-4 py-1.5 rounded-full mb-6 border border-[var(--clay-100)]">
+          <span className="inline-flex items-center gap-2 bg-[var(--sage-100)] text-[var(--sage-600)] text-xs font-semibold px-4 py-1.5 rounded-full mb-6 border border-[var(--sage-100)]">
             {dict.hero.tagline}
           </span>
           <h1
@@ -90,14 +114,14 @@ export default async function HomePage({
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href={`/${locale}/pricing`}
-              className="bg-[var(--clay-600)] hover:bg-[var(--clay-700)] text-white px-8 py-3.5 rounded-full font-semibold text-base transition-all hover:-translate-y-px"
+              className="bg-[var(--sage-600)] hover:bg-[var(--sage-700)] text-white px-8 py-3.5 rounded-full font-semibold text-base transition-all hover:-translate-y-px"
               style={{ boxShadow: "var(--shadow-md)" }}
             >
               {dict.hero.ctaPrimary}
             </Link>
             <Link
               href={`/${locale}/for-customer`}
-              className="bg-[var(--bg-elev)] text-[var(--fg)] px-8 py-3.5 rounded-full font-semibold text-base border border-[var(--border)] hover:border-[var(--clay-600)] hover:text-[var(--clay-600)] transition-colors"
+              className="bg-[var(--bg-elev)] text-[var(--fg)] px-8 py-3.5 rounded-full font-semibold text-base border border-[var(--border)] hover:border-[var(--sage-600)] hover:text-[var(--sage-600)] transition-colors"
             >
               {dict.hero.ctaSecondary}
             </Link>
@@ -179,7 +203,7 @@ export default async function HomePage({
                       b.status === "done"
                         ? "bg-[var(--sage-100)] text-[var(--sage-700)]"
                         : b.status === "active"
-                          ? "bg-[var(--clay-100)] text-[var(--clay-700)]"
+                          ? "bg-[var(--sage-100)] text-[var(--sage-700)]"
                           : "bg-[var(--ink-50)] text-[var(--ink-500)]"
                     }`}
                   >
@@ -209,11 +233,7 @@ export default async function HomePage({
             {dict.trustedBy.label}
           </p>
           <div className="grid grid-cols-3 gap-6 text-center">
-            {[
-              { value: "2.500+", label: dict.trustedBy.merchants },
-              { value: "80.000+", label: dict.trustedBy.bookings },
-              { value: "45+", label: dict.trustedBy.cities },
-            ].map((stat) => (
+            {statItems.map((stat) => (
               <div key={stat.label}>
                 <p className="text-3xl md:text-4xl font-bold text-[var(--primary)]">
                   {stat.value}
@@ -249,10 +269,10 @@ export default async function HomePage({
                   key={item.title}
                   className="group p-6 rounded-2xl border border-[var(--border)] hover:border-[var(--accent)] hover:shadow-md transition-all"
                 >
-                  <div className="w-10 h-10 rounded-xl bg-[var(--clay-100)] flex items-center justify-center mb-4 group-hover:bg-[var(--clay-600)] transition-colors">
+                  <div className="w-10 h-10 rounded-xl bg-[var(--sage-100)] flex items-center justify-center mb-4 group-hover:bg-[var(--sage-600)] transition-colors">
                     <Icon
                       size={20}
-                      className="text-[var(--clay-600)] group-hover:text-white transition-colors"
+                      className="text-[var(--sage-600)] group-hover:text-white transition-colors"
                     />
                   </div>
                   <h3 className="font-semibold text-[var(--primary)] mb-2">
@@ -319,7 +339,7 @@ export default async function HomePage({
       <section className="py-24 px-6 bg-[var(--bg-elev)]">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
           <div>
-            <span className="inline-block bg-[var(--clay-100)] text-[var(--clay-600)] text-xs font-semibold px-3 py-1 rounded-full mb-4 border border-[var(--clay-100)]">
+            <span className="inline-block bg-[var(--sage-100)] text-[var(--sage-600)] text-xs font-semibold px-3 py-1 rounded-full mb-4 border border-[var(--sage-100)]">
               {dict.forMerchant.badge}
             </span>
             <h2
@@ -348,17 +368,21 @@ export default async function HomePage({
             >
               {dict.forMerchant.cta} <ArrowRight size={15} />
             </Link>
+            <MerchantAppCTA locale={locale} className="mt-6" />
           </div>
-          {/* Dashboard illustration placeholder */}
-          <div className="bg-[var(--bg-muted)] rounded-2xl p-6 border border-[var(--border)] aspect-[4/3] flex items-center justify-center">
-            <div className="text-center text-[var(--text-secondary)]">
-              <BarChart2 size={48} className="mx-auto mb-3 opacity-30" />
-              <p className="text-sm">
-                {locale === "id"
-                  ? "Screenshot Dashboard"
-                  : "Dashboard Screenshot"}
-              </p>
-            </div>
+          {/* Merchant app screenshot */}
+          <div className="flex justify-center">
+            <Image
+              src="/screenshots/merchant-1.png"
+              alt={
+                locale === "id"
+                  ? "Dashboard bisnis di aplikasi trafti Merchant"
+                  : "Business dashboard in the trafti Merchant app"
+              }
+              width={330}
+              height={716}
+              className="h-auto w-auto max-h-[540px] rounded-[28px]"
+            />
           </div>
         </div>
       </section>
@@ -366,14 +390,20 @@ export default async function HomePage({
       {/* ── 6. For Customer ───────────────────────────────────────── */}
       <section className="py-24 px-6 bg-[var(--primary)]">
         <div className="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-14 items-center">
-          {/* App mockup placeholder */}
-          <div className="bg-white/10 rounded-2xl p-6 aspect-[4/3] flex items-center justify-center order-2 md:order-1">
-            <div className="text-center text-white/50">
-              <Smartphone size={48} className="mx-auto mb-3" />
-              <p className="text-sm">
+          {/* Customer app — still in development */}
+          <div className="bg-white/10 rounded-2xl p-8 aspect-[4/3] flex items-center justify-center order-2 md:order-1">
+            <div className="text-center">
+              <Image
+                src="/brand/app-icon-customer.png"
+                alt="trafti Customer app icon"
+                width={112}
+                height={112}
+                className="mx-auto mb-4 rounded-[22px] shadow-lg"
+              />
+              <p className="text-white/70 text-sm font-medium">
                 {locale === "id"
-                  ? "Screenshot Customer App"
-                  : "Customer App Screenshot"}
+                  ? "Aplikasi Customer segera hadir"
+                  : "Customer app coming soon"}
               </p>
             </div>
           </div>
@@ -397,34 +427,7 @@ export default async function HomePage({
                 </li>
               ))}
             </ol>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <Link
-                href={`/${locale}/for-customer`}
-                className="flex items-center gap-2 bg-white text-[var(--primary)] px-5 py-3 rounded-xl font-semibold text-sm hover:bg-gray-50 transition-colors"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                  fill="currentColor"
-                >
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98l-.09.06c-.22.17-2.18 1.27-2.16 3.79.03 3.02 2.65 4.03 2.68 4.04l-.07.29zM13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z" />
-                </svg>
-                {dict.forCustomer.appStore}
-              </Link>
-              <Link
-                href={`/${locale}/for-customer`}
-                className="flex items-center gap-2 bg-white text-[var(--primary)] px-5 py-3 rounded-xl font-semibold text-sm hover:bg-gray-50 transition-colors"
-              >
-                <svg
-                  viewBox="0 0 24 24"
-                  className="w-5 h-5"
-                  fill="currentColor"
-                >
-                  <path d="M3.18 23.76c.31.17.67.19 1.01.07l12.14-7.03-2.8-2.79-10.35 9.75zm15.95-9.22L16.8 13.2l-12.1 7c-.28.16-.49.4-.63.68l.11-.1 14.95-16.25zM.73.73C.28 1.21 0 1.9 0 2.7v18.6c0 .8.28 1.49.73 1.97l.1.1L11.6 12.5v-.27L.83.63.73.73zm15.25 8.8L13.1 7.68 1.1.68C.84.52.57.46.3.5L15.98 9.53z" />
-                </svg>
-                {dict.forCustomer.playStore}
-              </Link>
-            </div>
+            <CustomerAppBadges locale={locale} />
           </div>
         </div>
       </section>
@@ -459,7 +462,7 @@ export default async function HomePage({
                   ))}
                 </div>
                 <p className="text-[var(--primary)] text-sm leading-relaxed mb-6">
-                  "{t.quote}"
+                  &ldquo;{t.quote}&rdquo;
                 </p>
                 <div className="flex items-center gap-3">
                   <div className="w-9 h-9 rounded-full bg-[var(--accent)] text-white flex items-center justify-center font-bold text-sm flex-shrink-0">
@@ -494,16 +497,17 @@ export default async function HomePage({
               {dict.pricingPreview.subtitle}
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 items-center">
-            {pricingTiers.map((tier) => {
-              const price = formatPrice(tier, "monthly", locale);
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+            {tiers.map((tier) => {
               const isHighlighted = tier.highlighted;
+              const price = tier.monthly;
+              const hasDiscount = price ? price.normal > price.effective : false;
               return (
                 <div
-                  key={tier.id}
+                  key={tier.slug}
                   className={`rounded-2xl p-7 border-2 transition-all ${
                     isHighlighted
-                      ? "border-[var(--accent)] bg-[var(--primary)] text-white scale-[1.03] shadow-xl"
+                      ? "border-[var(--accent)] bg-[var(--primary)] text-white lg:scale-[1.03] shadow-xl"
                       : "border-[var(--border)] bg-[var(--bg-elev)]"
                   }`}
                 >
@@ -517,48 +521,49 @@ export default async function HomePage({
                   >
                     {tier.name}
                   </h3>
-                  <div className="flex items-baseline gap-1 mb-6">
-                    <span
-                      className={`text-4xl font-bold ${isHighlighted ? "text-white" : "text-[var(--primary)]"}`}
-                    >
-                      {price}
-                    </span>
-                    {tier.priceMonthly.IDR > 0 && (
-                      <span
-                        className={`text-sm ${isHighlighted ? "text-white/60" : "text-[var(--text-secondary)]"}`}
+                  <div className="mt-2 mb-6">
+                    {hasDiscount && price && (
+                      <p
+                        className={`text-xs line-through ${isHighlighted ? "text-white/40" : "text-[var(--text-secondary)]"}`}
                       >
-                        {dict.pricingPreview.perMonth}
-                      </span>
+                        {formatIDR(price.normal)}
+                      </p>
                     )}
+                    <div className="flex items-baseline gap-1">
+                      <span
+                        className={`text-3xl font-bold ${isHighlighted ? "text-white" : "text-[var(--primary)]"}`}
+                      >
+                        {tier.isFree || !price || price.effective === 0
+                          ? dict.pricingPreview.free
+                          : formatIDR(price.effective)}
+                      </span>
+                      {price && price.effective > 0 && (
+                        <span
+                          className={`text-sm ${isHighlighted ? "text-white/60" : "text-[var(--text-secondary)]"}`}
+                        >
+                          {dict.pricingPreview.perMonth}
+                        </span>
+                      )}
+                    </div>
                   </div>
                   <ul className="space-y-2.5 mb-8">
                     {tier.features.slice(0, 5).map((f) => (
                       <li
-                        key={f.label.id}
+                        key={f.id}
                         className="flex items-start gap-2 text-sm"
                       >
                         <Check
                           size={14}
-                          className={`mt-0.5 flex-shrink-0 ${
-                            f.included === true
-                              ? "text-[var(--accent)]"
-                              : isHighlighted
-                                ? "text-white/30"
-                                : "text-[var(--border)]"
-                          }`}
+                          className="mt-0.5 flex-shrink-0 text-[var(--accent)]"
                         />
                         <span
                           className={
-                            f.included !== true
-                              ? isHighlighted
-                                ? "text-white/40"
-                                : "text-[var(--border)]"
-                              : isHighlighted
-                                ? "text-white/90"
-                                : "text-[var(--primary)]"
+                            isHighlighted
+                              ? "text-white/90"
+                              : "text-[var(--primary)]"
                           }
                         >
-                          {locale === "id" ? f.label.id : f.label.en}
+                          {locale === "id" ? f.id : f.en}
                         </span>
                       </li>
                     ))}
@@ -568,10 +573,10 @@ export default async function HomePage({
                     className={`block text-center py-3 rounded-full font-semibold text-sm transition-colors ${
                       isHighlighted
                         ? "bg-[var(--accent)] hover:bg-[var(--accent-hover)] text-white"
-                        : "bg-[var(--bg-muted)] hover:bg-[var(--clay-600)] hover:text-white text-[var(--fg)] border border-[var(--border)] hover:border-[var(--clay-600)]"
+                        : "bg-[var(--bg-muted)] hover:bg-[var(--sage-600)] hover:text-white text-[var(--fg)] border border-[var(--border)] hover:border-[var(--sage-600)]"
                     }`}
                   >
-                    {tier.id === "free"
+                    {tier.isFree
                       ? dict.pricingPreview.ctaFree
                       : dict.pricingPreview.ctaPaid}
                   </Link>
@@ -634,7 +639,7 @@ export default async function HomePage({
           </p>
           <Link
             href={`/${locale}/pricing`}
-            className="inline-block bg-[var(--bg-elev)] text-[var(--clay-600)] px-10 py-4 rounded-full font-bold text-base hover:bg-[var(--clay-100)] transition-colors"
+            className="inline-block bg-[var(--bg-elev)] text-[var(--sage-600)] px-10 py-4 rounded-full font-bold text-base hover:bg-[var(--sage-100)] transition-colors"
             style={{ boxShadow: "var(--shadow-md)" }}
           >
             {dict.finalCta.cta}

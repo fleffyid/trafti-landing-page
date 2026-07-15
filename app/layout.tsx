@@ -1,29 +1,6 @@
 import type { Metadata } from "next";
-import {
-  Instrument_Serif,
-  Plus_Jakarta_Sans,
-  JetBrains_Mono,
-} from "next/font/google";
+import { instrumentSerif, plusJakartaSans, jetbrainsMono } from "./fonts";
 import "./globals.css";
-
-const instrumentSerif = Instrument_Serif({
-  variable: "--font-instrument-serif",
-  subsets: ["latin"],
-  weight: ["400"],
-  style: ["normal", "italic"],
-});
-
-const plusJakartaSans = Plus_Jakarta_Sans({
-  variable: "--font-plus-jakarta-sans",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700", "800"],
-});
-
-const jetbrainsMono = JetBrains_Mono({
-  variable: "--font-jetbrains-mono",
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-});
 
 export const metadata: Metadata = {
   title: {
@@ -33,6 +10,28 @@ export const metadata: Metadata = {
   description:
     "trafti adalah platform manajemen barbershop dan salon terlengkap di Indonesia. POS, booking online, manajemen karyawan, dan analytics dalam satu aplikasi.",
   metadataBase: new URL("https://trafti.id"),
+  icons: {
+    icon: [
+      { url: "/brand/logo-mark.svg", type: "image/svg+xml" },
+      { url: "/favicon.ico", sizes: "any" },
+    ],
+    apple: "/brand/app-icon-merchant.png",
+  },
+  openGraph: {
+    type: "website",
+    siteName: "trafti",
+    title: "trafti — Kelola Barbershop & Salon Lebih Mudah",
+    description:
+      "POS, booking online, manajemen karyawan, dan analytics dalam satu aplikasi.",
+    images: [{ url: "/brand/app-icon-merchant.png", width: 1024, height: 1024 }],
+  },
+  twitter: {
+    card: "summary",
+    title: "trafti — Kelola Barbershop & Salon Lebih Mudah",
+    description:
+      "POS, booking online, manajemen karyawan, dan analytics dalam satu aplikasi.",
+    images: ["/brand/app-icon-merchant.png"],
+  },
 };
 
 export default function RootLayout({

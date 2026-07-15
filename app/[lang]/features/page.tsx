@@ -190,7 +190,10 @@ export default async function FeaturesPage({
     <div className="pt-16">
       {/* Header */}
       <section className="py-20 px-6 bg-[var(--bg-muted)] text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--primary)] mb-4">
+        <h1
+          className="serif text-4xl md:text-5xl font-normal text-[var(--fg)] leading-tight mb-4"
+          style={{ letterSpacing: "-0.02em" }}
+        >
           {locale === "id"
             ? "Semua Fitur dalam Satu Platform"
             : "All Features in One Platform"}
@@ -218,8 +221,8 @@ export default async function FeaturesPage({
               }`}
             >
               <div className={!isEven ? "md:order-2" : ""}>
-                <div className="w-12 h-12 rounded-xl bg-[var(--clay-100)] flex items-center justify-center mb-5">
-                  <Icon size={24} className="text-[var(--clay-600)]" />
+                <div className="w-12 h-12 rounded-xl bg-[var(--sage-100)] flex items-center justify-center mb-5">
+                  <Icon size={24} className="text-[var(--sage-600)]" />
                 </div>
                 <h2
                   className="serif text-2xl md:text-3xl font-normal text-[var(--fg)] mb-3"
@@ -236,7 +239,7 @@ export default async function FeaturesPage({
                       key={b}
                       className="flex items-start gap-2 text-sm text-[var(--fg)]"
                     >
-                      <span className="text-[var(--clay-600)] mt-0.5">✓</span>
+                      <span className="text-[var(--sage-600)] mt-0.5">✓</span>
                       {b}
                     </li>
                   ))}
@@ -258,7 +261,7 @@ export default async function FeaturesPage({
       })}
 
       {/* CTA */}
-      <section className="py-20 px-6 bg-[var(--clay-600)] text-center">
+      <section className="py-20 px-6 bg-[var(--sage-600)] text-center">
         <h2
           className="serif text-3xl font-normal text-white mb-4"
           style={{ letterSpacing: "-0.015em" }}
@@ -269,7 +272,7 @@ export default async function FeaturesPage({
         </h2>
         <Link
           href={`/${locale}/pricing`}
-          className="inline-flex items-center gap-2 bg-[var(--bg-elev)] text-[var(--clay-600)] px-8 py-3.5 rounded-full font-bold text-sm hover:bg-[var(--clay-100)] transition-colors"
+          className="inline-flex items-center gap-2 bg-[var(--bg-elev)] text-[var(--sage-600)] px-8 py-3.5 rounded-full font-bold text-sm hover:bg-[var(--sage-100)] transition-colors"
         >
           {locale === "id" ? "Lihat Paket" : "See Plans"}{" "}
           <ArrowRight size={16} />

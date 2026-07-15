@@ -69,10 +69,13 @@ export default async function DocsPage({
     <div className="pt-16">
       {/* Hero */}
       <section className="py-24 px-6 bg-[var(--bg-muted)] text-center">
-        <span className="inline-block bg-[var(--clay-100)] text-[var(--clay-600)] text-xs font-semibold px-3 py-1 rounded-full mb-5">
+        <span className="inline-block bg-[var(--sage-100)] text-[var(--sage-600)] text-xs font-semibold px-3 py-1 rounded-full mb-5">
           {t.badge}
         </span>
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--primary)] mb-5">
+        <h1
+          className="serif text-4xl md:text-5xl font-normal text-[var(--fg)] leading-tight mb-5"
+          style={{ letterSpacing: "-0.02em" }}
+        >
           {t.title}
         </h1>
         <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
@@ -84,11 +87,14 @@ export default async function DocsPage({
       <section className="py-20 px-6 bg-[var(--bg-elev)]">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-start gap-4 mb-10">
-            <div className="w-12 h-12 rounded-2xl bg-[var(--clay-100)] flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-[var(--sage-100)] flex items-center justify-center flex-shrink-0">
               <Store size={22} className="text-[var(--accent)]" />
             </div>
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-[var(--primary)]">
+              <h2
+                className="serif text-2xl md:text-3xl font-normal text-[var(--fg)]"
+                style={{ letterSpacing: "-0.015em" }}
+              >
                 {t.merchant.title}
               </h2>
               <p className="text-[var(--text-secondary)] mt-1">
@@ -104,11 +110,14 @@ export default async function DocsPage({
       <section className="py-20 px-6 bg-[var(--bg-muted)]">
         <div className="max-w-3xl mx-auto">
           <div className="flex items-start gap-4 mb-10">
-            <div className="w-12 h-12 rounded-2xl bg-[var(--clay-100)] flex items-center justify-center flex-shrink-0">
+            <div className="w-12 h-12 rounded-2xl bg-[var(--sage-100)] flex items-center justify-center flex-shrink-0">
               <Smartphone size={22} className="text-[var(--accent)]" />
             </div>
             <div>
-              <h2 className="text-2xl md:text-3xl font-bold text-[var(--primary)]">
+              <h2
+                className="serif text-2xl md:text-3xl font-normal text-[var(--fg)]"
+                style={{ letterSpacing: "-0.015em" }}
+              >
                 {t.customer.title}
               </h2>
               <p className="text-[var(--text-secondary)] mt-1">
@@ -121,15 +130,20 @@ export default async function DocsPage({
       </section>
 
       {/* Help CTA */}
-      <section className="py-16 px-6 bg-[var(--clay-600)] text-center">
+      <section className="py-16 px-6 bg-[var(--sage-600)] text-center">
         <div className="w-12 h-12 rounded-2xl bg-white/10 flex items-center justify-center mx-auto mb-4">
           <LifeBuoy size={22} className="text-white" />
         </div>
-        <h2 className="text-2xl font-bold text-white mb-3">{t.help.title}</h2>
+        <h2
+          className="serif text-3xl md:text-4xl font-normal text-white mb-3"
+          style={{ letterSpacing: "-0.015em" }}
+        >
+          {t.help.title}
+        </h2>
         <p className="text-white/70 max-w-lg mx-auto mb-6">{t.help.desc}</p>
         <Link
           href={`/${locale}/contact`}
-          className="inline-flex items-center gap-2 bg-[var(--bg-elev)] text-[var(--clay-600)] px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-[var(--clay-100)] transition-colors"
+          className="inline-flex items-center gap-2 bg-[var(--bg-elev)] text-[var(--sage-600)] px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-[var(--sage-100)] transition-colors"
         >
           {t.help.cta} <ArrowRight size={15} />
         </Link>

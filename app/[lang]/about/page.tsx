@@ -32,7 +32,10 @@ export default async function AboutPage({
     <div className="pt-16">
       {/* Hero */}
       <section className="py-24 px-6 bg-[var(--bg-muted)] text-center">
-        <h1 className="text-4xl md:text-5xl font-bold text-[var(--primary)] mb-5">
+        <h1
+          className="serif text-4xl md:text-5xl font-normal text-[var(--fg)] leading-tight mb-5"
+          style={{ letterSpacing: "-0.02em" }}
+        >
           {locale === "id" ? "Tentang trafti" : "About trafti"}
         </h1>
         <p className="text-[var(--text-secondary)] text-lg max-w-2xl mx-auto">
@@ -45,7 +48,10 @@ export default async function AboutPage({
       {/* Story */}
       <section className="py-20 px-6 bg-[var(--bg-elev)]">
         <div className="max-w-3xl mx-auto prose prose-slate max-w-none">
-          <h2 className="text-2xl font-bold text-[var(--primary)] mb-5">
+          <h2
+            className="serif text-3xl md:text-4xl font-normal text-[var(--fg)] mb-5"
+            style={{ letterSpacing: "-0.015em" }}
+          >
             {locale === "id" ? "Cerita Kami" : "Our Story"}
           </h2>
           <p className="text-[var(--text-secondary)] leading-relaxed mb-5">
@@ -94,7 +100,10 @@ export default async function AboutPage({
 
       {/* Team placeholder */}
       <section className="py-20 px-6 bg-[var(--bg-elev)] text-center">
-        <h2 className="text-2xl font-bold text-[var(--primary)] mb-4">
+        <h2
+          className="serif text-3xl md:text-4xl font-normal text-[var(--fg)] mb-4"
+          style={{ letterSpacing: "-0.015em" }}
+        >
           {locale === "id" ? "Tim Kami" : "Our Team"}
         </h2>
         <p className="text-[var(--text-secondary)] mb-6">
@@ -110,15 +119,18 @@ export default async function AboutPage({
       </section>
 
       {/* CTA */}
-      <section className="py-16 px-6 bg-[var(--clay-600)] text-center">
-        <h2 className="text-2xl font-bold text-white mb-4">
+      <section className="py-16 px-6 bg-[var(--sage-600)] text-center">
+        <h2
+          className="serif text-3xl md:text-4xl font-normal text-white mb-4"
+          style={{ letterSpacing: "-0.015em" }}
+        >
           {locale === "id"
             ? "Mau Bergabung dalam Perjalanan Ini?"
             : "Want to Join This Journey?"}
         </h2>
         <Link
           href={`/${locale}/contact`}
-          className="inline-flex items-center gap-2 bg-[var(--bg-elev)] text-[var(--clay-600)] px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-[var(--clay-100)] transition-colors"
+          className="inline-flex items-center gap-2 bg-[var(--bg-elev)] text-[var(--sage-600)] px-7 py-3.5 rounded-full font-semibold text-sm hover:bg-[var(--sage-100)] transition-colors"
         >
           {locale === "id" ? "Hubungi Kami" : "Contact Us"}{" "}
           <ArrowRight size={15} />

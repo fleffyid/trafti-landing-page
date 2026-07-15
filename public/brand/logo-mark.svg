@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 140" width="100" height="140" role="img" aria-label="Trapti">
+  <title>Trapti — The Mirror</title>
+  <ellipse cx="50" cy="70" rx="36" ry="58" fill="none" stroke="#0F1B26" stroke-width="6"></ellipse>
+  <line x1="50" y1="58" x2="50" y2="98" stroke="#3D8B7A" stroke-width="6.4" stroke-linecap="round"></line>
+  <circle cx="50" cy="42" r="5.4" fill="#3D8B7A"></circle>
+</svg>

@@ -166,7 +166,7 @@ export default function CookieBanner({
           {expanded ? (
             <button
               onClick={savePreferences}
-              className="border border-[var(--accent)] text-[var(--accent)] text-sm font-medium px-4 py-2 rounded-full hover:bg-[var(--clay-100)] transition-colors"
+              className="border border-[var(--accent)] text-[var(--accent)] text-sm font-medium px-4 py-2 rounded-full hover:bg-[var(--sage-100)] transition-colors"
             >
               {dict.save}
             </button>

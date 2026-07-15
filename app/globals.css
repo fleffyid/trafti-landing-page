@@ -105,8 +105,8 @@
   --background: var(--bg);
   --foreground: var(--fg);
   --primary: var(--ink-900);
-  --accent: var(--clay-600);
-  --accent-hover: var(--clay-700);
+  --accent: var(--sage-600);
+  --accent-hover: var(--sage-700);
   --surface-muted: var(--bg-muted);
   --text-secondary: var(--fg-muted);
   --error: var(--danger);
@@ -133,8 +133,8 @@
   --color-background: var(--bg);
   --color-foreground: var(--fg);
   --color-primary: var(--ink-900);
-  --color-accent: var(--clay-600);
-  --color-accent-hover: var(--clay-700);
+  --color-accent: var(--sage-600);
+  --color-accent-hover: var(--sage-700);
   --color-surface-muted: var(--bg-muted);
   --color-border: var(--border);
   --color-text-secondary: var(--fg-muted);

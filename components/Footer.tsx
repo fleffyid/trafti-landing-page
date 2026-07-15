@@ -1,5 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Locale } from "@/app/[lang]/dictionaries";
+import { SUPPORT_EMAIL, SOCIAL } from "@/config/links";
 
 type FooterDict = {
   tagline: string;
@@ -35,7 +37,14 @@ export default function Footer({
       <div className="max-w-6xl mx-auto px-6 py-14 grid grid-cols-1 md:grid-cols-4 gap-10">
         {/* Brand */}
         <div className="md:col-span-1">
-          <p className="leading-none mb-3">
+          <p className="flex items-center gap-2 leading-none mb-3">
+            <Image
+              src="/brand/logo-mark-ondark.svg"
+              alt="trafti"
+              width={20}
+              height={28}
+              className="h-7 w-auto"
+            />
             <span
               className="serif text-[22px] text-white"
               style={{ letterSpacing: "-0.02em" }}
@@ -44,7 +53,7 @@ export default function Footer({
             </span>
             <em
               className="serif not-italic text-[22px]"
-              style={{ color: "var(--clay-400)", letterSpacing: "-0.02em" }}
+              style={{ color: "var(--sage-500)", letterSpacing: "-0.02em" }}
             >
               .
             </em>
@@ -52,53 +61,53 @@ export default function Footer({
           <p className="text-[var(--ink-500)] leading-relaxed text-sm">
             {dict.tagline}
           </p>
-          <div className="flex gap-3 mt-5">
-            <a
-              href="#"
-              aria-label="Instagram"
-              className="hover:text-white transition-colors"
+          {/* Support email — social channels not live yet, so we lead with a
+              real way to reach us and only render icons once handles exist. */}
+          <a
+            href={`mailto:${SUPPORT_EMAIL}`}
+            className="inline-flex items-center gap-2 mt-5 text-[var(--ink-300)] hover:text-white transition-colors text-sm"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              className="w-[16px] h-[16px]"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth={1.5}
+              strokeLinecap="round"
+              strokeLinejoin="round"
             >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-[18px] h-[18px]"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth={1.5}
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
-                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
-                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              aria-label="Twitter / X"
-              className="hover:text-white transition-colors"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-[18px] h-[18px]"
-                fill="currentColor"
-              >
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
-              </svg>
-            </a>
-            <a
-              href="#"
-              aria-label="YouTube"
-              className="hover:text-white transition-colors"
-            >
-              <svg
-                viewBox="0 0 24 24"
-                className="w-[18px] h-[18px]"
-                fill="currentColor"
-              >
-                <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-              </svg>
-            </a>
-          </div>
+              <rect x="3" y="5" width="18" height="14" rx="2" />
+              <path d="m3 7 9 6 9-6" />
+            </svg>
+            {SUPPORT_EMAIL}
+          </a>
+          {(SOCIAL.instagram || SOCIAL.twitter || SOCIAL.youtube) && (
+            <div className="flex gap-3 mt-5">
+              {SOCIAL.instagram && (
+                <a
+                  href={SOCIAL.instagram}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="hover:text-white transition-colors"
+                >
+                  <svg
+                    viewBox="0 0 24 24"
+                    className="w-[18px] h-[18px]"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth={1.5}
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  >
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                  </svg>
+                </a>
+              )}
+            </div>
+          )}
         </div>
 
         {/* Product */}

@@ -43,7 +43,10 @@ export default async function ForCustomerPage({
         <span className="inline-block bg-white/10 text-white/80 text-xs font-semibold px-3 py-1 rounded-full mb-5">
           {dict.forCustomer.badge}
         </span>
-        <h1 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight">
+        <h1
+          className="serif text-4xl md:text-5xl font-normal text-white mb-5 leading-tight"
+          style={{ letterSpacing: "-0.02em" }}
+        >
           {dict.forCustomer.title}
         </h1>
         <p className="text-white/70 text-lg max-w-xl mx-auto mb-12">
@@ -86,7 +89,10 @@ export default async function ForCustomerPage({
       {/* Steps */}
       <section className="py-20 px-6 bg-[var(--bg-elev)]">
         <div className="max-w-3xl mx-auto text-center">
-          <h2 className="text-2xl md:text-3xl font-bold text-[var(--primary)] mb-14">
+          <h2
+            className="serif text-3xl md:text-4xl font-normal text-[var(--fg)] mb-14"
+            style={{ letterSpacing: "-0.015em" }}
+          >
             {locale === "id"
               ? "Cara Menggunakan Customer App"
               : "How to Use the Customer App"}
@@ -96,7 +102,7 @@ export default async function ForCustomerPage({
               const Icon = step.icon;
               return (
                 <div key={step.title} className="text-center">
-                  <div className="w-14 h-14 rounded-2xl bg-[var(--clay-100)] flex items-center justify-center mx-auto mb-4">
+                  <div className="w-14 h-14 rounded-2xl bg-[var(--sage-100)] flex items-center justify-center mx-auto mb-4">
                     <Icon size={24} className="text-[var(--accent)]" />
                   </div>
                   <div className="w-6 h-6 rounded-full bg-[var(--accent)] text-white text-xs font-bold flex items-center justify-center mx-auto -mt-2 mb-3">
@@ -121,7 +127,10 @@ export default async function ForCustomerPage({
             </p>
           </div>
           <div>
-            <h2 className="text-2xl font-bold text-[var(--primary)] mb-4">
+            <h2
+              className="serif text-3xl md:text-4xl font-normal text-[var(--fg)] mb-4"
+              style={{ letterSpacing: "-0.015em" }}
+            >
               {dict.forCustomer.downloadTitle}
             </h2>
             <p className="text-[var(--text-secondary)] mb-8">

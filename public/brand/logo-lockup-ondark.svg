@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 160" width="560" height="160" role="img" aria-label="Trapti Mitra">
+  <title>Trapti Mitra logo</title>
+  <g transform="translate(20,14)">
+    <ellipse cx="48" cy="68" rx="35" ry="56" fill="none" stroke="#F1E4CE" stroke-width="6"></ellipse>
+    <line x1="48" y1="56" x2="48" y2="96" stroke="#4FAA96" stroke-width="6.4" stroke-linecap="round"></line>
+    <circle cx="48" cy="40" r="5.4" fill="#4FAA96"></circle>
+  </g>
+  <text x="128" y="100" font-family="&#39;Inter Tight&#39;,&#39;Helvetica Neue&#39;,Arial,sans-serif" font-size="74" font-weight="600" letter-spacing="-3" fill="#F1E4CE">Trapti<tspan fill="#4FAA96"> Mitra</tspan></text>
+</svg>
