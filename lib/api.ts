@@ -6,7 +6,7 @@
 const API_BASE = (
   process.env.API_URL ??
   process.env.NEXT_PUBLIC_API_URL ??
-  "https://api.trafti.id"
+  "https://trafti.fleffy.id"
 ).replace(/\/$/, "");
 
 /** One duration row of a package. BigInt amounts arrive as strings over JSON. */
@@ -86,10 +86,59 @@ export function getPublicStats(): Promise<PublicStats | null> {
   return apiGet<PublicStats>("/v1/public/stats", 900);
 }
 
+/**
+ * Raw outlet shape as returned by the backend. Payment flags live inside a
+ * stringified `settings` blob rather than a typed `paymentOptions` object, so
+ * we normalize below.
+ */
+interface RawOutlet {
+  id: string;
+  name: string;
+  slug: string | null;
+  address: string;
+  city: string;
+  province: string;
+  logoUrl: string | null;
+  settings?: string | null;
+  operatingHours?: OutletOperatingHour[];
+}
+
+/** Parse the stringified `settings` blob into the outlet's payment options. */
+function parsePaymentOptions(settings?: string | null): OutletPaymentOptions {
+  try {
+    const parsed = JSON.parse(settings ?? "{}") as {
+      bookingPayAtOutletEnabled?: boolean;
+      bookingPayViaAppEnabled?: boolean;
+    };
+    return {
+      payAtVenue: parsed.bookingPayAtOutletEnabled ?? false,
+      payViaApp: parsed.bookingPayViaAppEnabled ?? false,
+    };
+  } catch {
+    // Bad/missing settings: fall back to pay-at-venue so the flow still works.
+    return { payAtVenue: true, payViaApp: false };
+  }
+}
+
 /** Resolve the outlet behind a public booking link. Returns null when unknown. */
-export function getOutletBySlug(slug: string): Promise<PublicOutlet | null> {
-  return apiGet<PublicOutlet>(
+export async function getOutletBySlug(
+  slug: string,
+): Promise<PublicOutlet | null> {
+  const raw = await apiGet<RawOutlet>(
     `/v1/public/outlets/by-slug/${encodeURIComponent(slug)}`,
     300,
   );
+  if (!raw) return null;
+
+  return {
+    id: raw.id,
+    name: raw.name,
+    slug: raw.slug,
+    address: raw.address,
+    city: raw.city,
+    province: raw.province,
+    logoUrl: raw.logoUrl,
+    operatingHours: raw.operatingHours,
+    paymentOptions: parsePaymentOptions(raw.settings),
+  };
 }

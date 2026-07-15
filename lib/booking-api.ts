@@ -4,7 +4,7 @@
 // (no auth) on the trafti backend.
 
 const API_BASE = (
-  process.env.NEXT_PUBLIC_API_URL ?? "https://api.trafti.id"
+  process.env.NEXT_PUBLIC_API_URL ?? "https://trafti.fleffy.id"
 ).replace(/\/$/, "");
 
 /** A service offered at the outlet. `price` is IDR as a string (BigInt). */
